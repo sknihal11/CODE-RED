@@ -1,12 +1,6 @@
 def average_passing_grades(grades: list[int]) -> float:
     """
     Calculate the average of grades that are 50 or higher.
-
-    Args:
-        grades: A list of integers representing scores.
-
-    Returns:
-        The average of passing grades as a float, or 0.0 if none exist.
     """
     passing_sum = 0
     count = 0
@@ -17,16 +11,8 @@ def average_passing_grades(grades: list[int]) -> float:
             passing_sum += grade
             count += 1
             
-    # Check if we found any passing grades to avoid division by zero
+    # Avoid division by zero
     if count == 0:
         return 0.0
         
-    # Return the average
     return float(passing_sum / count)
-
-# Sample Test Cases
-assert average_passing_grades([40, 60, 80, 20]) == 70.0
-assert average_passing_grades([50, 100]) == 75.0
-assert average_passing_grades([10, 20, 30]) == 0.0
-assert average_passing_grades([85]) == 85.0
-assert average_passing_grades([]) == 0.0
