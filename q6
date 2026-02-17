@@ -1,0 +1,36 @@
+def convert_temperature(value: float, unit: str) -> float | str:
+    """
+    Convert temperature between Celsius and Fahrenheit.
+    
+    Args:
+        value: The temperature value to convert.
+        unit: The unit of the input value ('C' for Celsius, 'F' for Fahrenheit).
+        
+    Returns:
+        The converted temperature as a float (rounded to 1 decimal),
+        or "Invalid Unit" if the unit is unknown.
+    """
+    # Handle Celsius to Fahrenheit
+    if unit == 'C':
+        # Formula: (C * 9/5) + 32
+        result = (value * 9/5) + 32
+        # Requirement: Round to 1 decimal place
+        return round(result, 1)
+        
+    # Handle Fahrenheit to Celsius
+    elif unit == 'F':
+        # Formula: (F - 32) * 5/9
+        result = (value - 32) * 5/9
+        # Requirement: Round to 1 decimal place
+        return round(result, 1)
+        
+    # Handle Invalid Input
+    else:
+        return "Invalid Unit"
+
+# Sample Test Cases
+assert convert_temperature(0, 'C') == 32.0
+assert convert_temperature(100, 'F') == 37.8
+assert convert_temperature(100, 'C') == 212.0
+assert convert_temperature(-40, 'F') == -40.0
+assert convert_temperature(25, 'K') == "Invalid Unit"
