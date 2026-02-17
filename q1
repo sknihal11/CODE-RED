@@ -1,0 +1,27 @@
+def calculate_total_bill(amount: float, tip_percent: int) -> float:
+    """
+    Calculate the total bill including tip.
+
+    Args:
+        amount: The initial bill amount (numeric)
+        tip_percent: The tip percentage (integer)
+
+    Returns:
+        The total bill rounded to 2 decimal places.
+    """
+    # Convert inputs to float
+    bill = float(amount)
+    tip = float(tip_percent)
+    
+    # Formula: Total = Amount + (Amount * Tip_Percent / 100)
+    final_amount = bill + (bill * (tip / 100))
+    
+    # Return result rounded to 2 decimal places
+    return round(final_amount, 2)
+
+# Sample Test Cases
+assert calculate_total_bill(100.0, 15) == 115.0
+assert calculate_total_bill(55.50, 20) == 66.6
+assert calculate_total_bill(200, 0) == 200.0
+assert calculate_total_bill(12.99, 10) == 14.29
+assert calculate_total_bill(0, 15) == 0.0
