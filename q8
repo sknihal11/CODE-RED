@@ -1,0 +1,29 @@
+def sanitize_email(raw_input: str) -> str:
+    """
+    Clean and validate an email string.
+
+    Args:
+        raw_input: A string containing a potential email address.
+
+    Returns:
+        The cleaned lowercase email or "Invalid Email".
+    """
+    # Step 1: Remove leading/trailing whitespace
+    clean_string = raw_input.strip()
+    
+    # Step 2: Convert to lowercase
+    clean_string = clean_string.lower()
+    
+    # Step 3: Check for exactly one "@" symbol
+    # The count() method returns how many times a substring appears
+    if clean_string.count("@") == 1:
+        return clean_string
+    else:
+        return "Invalid Email"
+
+# Sample Test Cases
+assert sanitize_email("  User@Example.com   ") == "user@example.com"
+assert sanitize_email("test@domain.org") == "test@domain.org"
+assert sanitize_email("myname-website.com") == "Invalid Email"
+assert sanitize_email("admin@@company.com") == "Invalid Email"
+assert sanitize_email("   ") == "Invalid Email"
