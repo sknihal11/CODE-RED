@@ -1,0 +1,34 @@
+def organize_scores(scores: list[int], descending: bool) -> list[int]:
+    """
+    Sort scores without modifying the original list.
+
+    Args:
+        scores: A list of integers.
+        descending: Boolean indicating sort order.
+
+    Returns:
+        A new sorted list of integers.
+    """
+    # The sorted() function returns a NEW list, leaving the original alone.
+    # The 'reverse' parameter controls the order:
+    # If descending is True, reverse=True (High to Low).
+    # If descending is False, reverse=False (Low to High).
+    return sorted(scores, reverse=descending)
+
+# Sample Test Cases
+# Test Case 1: Ascending order
+assert organize_scores([10, 5, 8], False) == [5, 8, 10]
+
+# Test Case 2: Descending order
+assert organize_scores([10, 5, 8], True) == [10, 8, 5]
+
+# Test Case 3: Verify original list is not changed
+original = [3, 1, 2]
+organize_scores(original, True)
+assert original == [3, 1, 2]
+
+# Test Case 4: Already sorted
+assert organize_scores([1, 2, 3], False) == [1, 2, 3]
+
+# Test Case 5: Empty list
+assert organize_scores([], False) == []
