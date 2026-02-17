@@ -1,0 +1,51 @@
+def calculate(expression: str) -> float:
+    """
+    Evaluate a mathematical expression string without using eval().
+    Follows operator precedence (* and / before + and -).
+
+    Args:
+        expression: A string containing integers and operators (+, -, *, /).
+
+    Returns:
+        The result as a float rounded to 2 decimal places.
+    """
+    # Remove spaces to make parsing easier
+    s = expression.replace(" ", "")
+    
+    stack = []
+    current_num = 0
+    current_op = '+'  # Default operator for the first number
+    
+    for i, char in enumerate(s):
+        # Build the number (handles multi-digit numbers like "10" or "100")
+        if char.isdigit():
+            current_num = current_num * 10 + int(char)
+            
+        # If we hit an operator or reach the end of the string, process the number
+        if char in "+-*/" or i == len(s) - 1:
+            if current_op == '+':
+                stack.append(current_num)
+            elif current_op == '-':
+                stack.append(-current_num)
+            elif current_op == '*':
+                # Pop the last number, multiply it, and push the result back
+                prev_val = stack.pop()
+                stack.append(prev_val * current_num)
+            elif current_op == '/':
+                # Pop the last number, divide it, and push the result back
+                prev_val = stack.pop()
+                stack.append(prev_val / current_num)
+            
+            # Update the operator for the next number and reset current_num
+            current_op = char
+            current_num = 0
+            
+    # Sum everything in the stack to get the final result
+    return round(sum(stack), 2)
+
+# Sample Test Cases
+assert calculate("2 + 3") == 5.0
+assert calculate("10 - 5 * 2") == 0.0
+assert calculate("20 / 4 + 3 * 2") == 11.0
+assert calculate("100 / 3") == 33.33
+assert calculate("5") == 5.0
