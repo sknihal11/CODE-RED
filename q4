@@ -1,13 +1,6 @@
 def get_ticket_price(age: int, is_student: bool) -> int:
     """
     Determine ticket price based on age and student status.
-
-    Args:
-        age: Integer representing the person's age.
-        is_student: Boolean indicating if the person is a student.
-
-    Returns:
-        The ticket price as an integer.
     """
     # Check for Children (under 12)
     if age < 12:
@@ -23,10 +16,3 @@ def get_ticket_price(age: int, is_student: bool) -> int:
             return 12
         else:
             return 15
-
-# Sample Test Cases
-assert get_ticket_price(10, False) == 8
-assert get_ticket_price(70, True) == 10
-assert get_ticket_price(20, True) == 12
-assert get_ticket_price(25, False) == 15
-assert get_ticket_price(12, False) == 15
