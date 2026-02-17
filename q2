@@ -1,0 +1,25 @@
+def convert_seconds(total_seconds: int) -> str:
+    """
+    Convert total seconds into minutes and remaining seconds.
+    
+    Args:
+        total_seconds: An integer representing time in seconds.
+        
+    Returns:
+        A string formatted as "Xm Ys".
+    """
+    # Get the whole minutes
+    minutes = total_seconds // 60
+    
+    # Get the remaining seconds
+    seconds = total_seconds % 60
+    
+    # Format the string as requested
+    return f"{minutes}m {seconds}s"
+
+# Sample Test Cases
+assert convert_seconds(125) == "2m 5s"
+assert convert_seconds(60) == "1m 0s"
+assert convert_seconds(45) == "0m 45s"
+assert convert_seconds(3600) == "60m 0s"
+assert convert_seconds(0) == "0m 0s"
